@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<style type="text/css">
+ 
+#tabla{	border: solid 1px #333;	width: 300px; }
+#tabla tbody tr{ background: #999; }
+.fila-base{ display: none; } /* fila base oculta */
+input[type="text"]{ width: 80px; } /* ancho a los elementos input="text" */
+ 
+</style>
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        /**
+	   	* piper quinteros
+         * Funcion para añadir una nueva columna en la tabla
+         */
+        $("#add").click(function(){
+            // Obtenemos el numero de filas (td) que tiene la primera columna
+         
+            var tds=$("#tabla tr:first td").length;
+            // Obtenemos el total de columnas (tr) del id "tabla"
+            var trs=$("#tabla tr").length;
+            var nuevaFila="<tr>";
+            for(var i=0;i<tds;i++){
+                // añadimos las columnas
+                nuevaFila+="<td>columna "+(i+1)+" Añadida con jquery</td>";
+            }
+            // Añadimos una columna con el numero total de columnas.
+            // Añadimos uno al total, ya que cuando cargamos los valores para la
+            // columna, todavia no esta añadida
+            nuevaFila+="<td>"+(trs+1)+" filas";
+            nuevaFila+="</tr>";
+            $("#tabla").append(nuevaFila);
+        });
+
+    });
+    </script>
+    
+   
+</head>
+
+<body>
+
+<input type="button" id="add" value="Agregar fila" />
+<p>
+    <table id="tabla" border=1>
+        <tr>
+            <td>primera columma</td>
+            <td>segundo columna</td>
+            <!-- podemos añadir tantas columnas como deseemos -->
+            <td>tercera columna</td>
+        </tr>
+    </table>
+</p>
+</body>
+</html>
